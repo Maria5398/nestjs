@@ -9,7 +9,7 @@ export class PostService {
   constructor(
     @InjectRepository(PostEntity)
     private postRepository: PostRepository,
-  ){}
+  ) {}
 
   async getAll(): Promise<PostEntity[]> {
     const list = await this.postRepository.find();
@@ -31,13 +31,13 @@ export class PostService {
     return post;
   }
 
-  async create(dto: PostDto): Promise<any>{
+  async create(dto: PostDto): Promise<any> {
     const post = this.postRepository.create(dto);
     await this.postRepository.save(post);
     return { message: `post ${post.nombre} create` };
   }
 
-  async update(id: number, dto: PostDto): Promise<any>{
+  async update(id: number, dto: PostDto): Promise<any> {
     const post = await this.findById(id);
     dto.nombre ? (post.nombre = dto.nombre) : (post.nombre = post.nombre);
     dto.precio ? (post.precio = dto.precio) : (post.precio = post.precio);

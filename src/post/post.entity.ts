@@ -6,9 +6,8 @@ export class PostEntity {
   id: number;
 
   @Column({ type: 'varchar', length: 10, nullable: false, unique: true })
-  number: string;
+  nombre: string;
 
   @Column({ type: 'float', nullable: false })
   precio: number;
-    nombre: string;
 }
